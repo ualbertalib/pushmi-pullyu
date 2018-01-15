@@ -4,6 +4,7 @@ require 'optparse'
 require 'rollbar'
 require 'singleton'
 require 'yaml'
+require 'swift_ingest'
 
 # CLI runner
 class PushmiPullyu::CLI
@@ -220,12 +221,13 @@ class PushmiPullyu::CLI
   end
 
   def swift
-    @swift ||= PushmiPullyu::SwiftDepositer.new(username: options[:swift][:username],
-                                                password: options[:swift][:password],
-                                                tenant: options[:swift][:tenant],
-                                                project_name: options[:swift][:project_name],
-                                                project_domain_name: options[:swift][:project_domain_name],
-                                                auth_url: options[:swift][:auth_url])
+    @swift ||= SwiftIngest::Ingestor.new(username: options[:swift][:username],
+                                         password: options[:swift][:password],
+                                         tenant: options[:swift][:tenant],
+                                         auth_url: options[:swift][:auth_url],
+                                         project_name: options[:swift][:project_name],
+                                         project_domain_name: options[:swift][:project_domain_name],
+                                         project: options[:swift][:project])
   end
 
   # On first call of shutdown, this will gracefully close the main run loop

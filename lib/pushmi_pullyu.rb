@@ -12,7 +12,6 @@ require 'pushmi_pullyu/aip/solr_fetcher'
 require 'pushmi_pullyu/aip/fedora_fetcher'
 require 'pushmi_pullyu/cli'
 require 'pushmi_pullyu/preservation_queue'
-require 'pushmi_pullyu/swift_depositer'
 
 require 'active_support'
 require 'active_support/core_ext'
@@ -49,6 +48,7 @@ module PushmiPullyu
       auth_url: 'http://localhost:8080/auth/v1.0',
       project_name: 'demo',
       project_domain_name: 'default',
+      project: 'ERA',
       container: 'ERA'
     },
     rollbar: {
