@@ -17,7 +17,7 @@ RSpec.describe PushmiPullyu::CLI do
       expect(cli).not_to have_received(:start_server_as_daemon)
     end
 
-    context 'should run as daemon' do
+    context 'when it should run as daemon' do
       it 'starts working loop as daemon' do
         PushmiPullyu.options[:daemonize] = true
 
@@ -28,7 +28,7 @@ RSpec.describe PushmiPullyu::CLI do
       end
     end
 
-    context 'Rollbar' do
+    context 'when rollbar is used' do
       it 'sets up Rollbar' do
         PushmiPullyu.options[:rollbar][:token] = 'xyzzy'
 
