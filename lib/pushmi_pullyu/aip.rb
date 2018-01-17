@@ -9,7 +9,6 @@ module PushmiPullyu::AIP
     aip_directory = "#{PushmiPullyu.options[:workdir]}/#{noid}"
     aip_filename = "#{aip_directory}.tar"
 
-    x=aip_directory unless aip_directory.nil?
     PushmiPullyu::AIP::Downloader.new(noid, aip_directory).run
     PushmiPullyu::AIP::Creator.new(noid, aip_directory, aip_filename).run
 
